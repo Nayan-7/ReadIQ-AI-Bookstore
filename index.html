@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ReadIQ - Dark Blue & Red Theme</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+ 
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header class="header" role="banner">
+    <div class="container header-container">
+      <div class="footer-logo" style="gap: 12px;">
+        <img src="assets/booklogo.jpg" alt="SmartLearn Logo" style="height: 50px; width: auto; user-select:none;" />
+        <div style="display:flex; flex-direction: column; line-height: 1.1;">
+          <span
+            style="font-family: 'Bell MT', sans-serif; font-size: 1.3rem; color: var(--accent-red); user-select:none;">SmartLearn</span>
+          <small style="font-weight: 400; font-size: 0.75rem; color: var(--text-muted); user-select:none;">Discover.
+            Learn. Read. Smarter.</small>
+        </div>
+      </div>
+
+      <nav class="nav" role="navigation" aria-label="Primary navigation">
+        <ul>
+          <li><a href="#catalog"><i class="fas fa-book" aria-hidden="true"></i> Catalog</a></li>
+          <li><a href="#cart"><i class="fas fa-shopping-cart" aria-hidden="true"></i>Access Cart<span class="cart-count"
+                aria-live="polite" aria-atomic="true">0</span></a></li>
+          <li><button id="btnQuiz" class="btn btn-outline" aria-haspopup="dialog"><i class="fas fa-trophy"
+                aria-hidden="true"></i> Take Quiz</button></li>
+          <li><button id="btnLogin" class="btn btn-outline" aria-haspopup="dialog"><i class="fas fa-user"
+                aria-hidden="true"></i> Login</button></li>
+        </ul>
+      </nav>
+      <!-- USER ACCOUNT DROPDOWN -->
+      <!-- SMARTLEARN ACCOUNT MENU -->
+      <div id="accountBox" class="account-box hidden">
+        <div id="accountTrigger" class="account-trigger">
+          <img id="accountPic" class="account-pic" alt="Profile" />
+          <img id="googleLogo" class="google-logo hidden"
+            src="https://www.gstatic.com/images/branding/product/1x/gsa_48dp.png" />
+          <span id="accountName">SmartLearn Account</span>
+          <span class="caret">▾</span>
+          <span id="profileBadge" class="profile-badge hidden">1</span>
+
+        </div>
+
+        <div id="accountMenu" class="account-menu hidden">
+          <div class="menu-header">
+            <img id="menuPic" class="menu-pic" />
+            <div>
+              <div id="menuName" class="menu-name">User</div>
+              <div class="menu-sub">SmartLearn Account</div>
+            </div>
+          </div>
+
+          <button id="menuOrders">📚 My Library</button>
+          <button id="menuCart">🛒 Access Cart</button>
+          <button id="menuAI">🤖 AI Recommendations</button>
+          <button id="menuProfile">👤 My Profile</button>
+          <button id="menuAIDashboard">🧠 AI Dashboard</button>
+          <button id="menuSettings">⚙️ Settings</button>
+          
+
+          <div class="menu-divider"></div>
+          <button id="switchGoogleAccount" class="danger">
+            🔄 Switch Google Account
+          </button>
+
+
+          <button id="btnLogout" class="logout-btn">🚪 Logout</button>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </header>
+
+  <!-- MAIN CONTENT -->
+<main>
+    <!-- HERO SECTION -->
+  <section class="hero" role="region" aria-label="Hero section">
+      <video id="heroVideo" class="hero-video" autoplay muted loop playsinline preload="auto"
+        poster="https://cdn-icons-png.flaticon.com/512/2907/2907763" aria-hidden="true"
+        style="filter: brightness(0.95) saturate(1.08) contrast(1.02); opacity: 0.99;">
+        <source src="https://cdn.pixabay.com/video/2023/10/15/185092-874643408_large.mp4" type="video/mp4" />
+        <source src="https://cdn.pixabay.com/video/2023/10/15/185092-874643408_large.mp4" type="video/webm" />
+        Your browser does not support the video element.
+      </video>
+
+      <div class="hero-overlay" aria-hidden="true"></div>
+
+      <div class="hero-container container" role="presentation">
+        <div class="hero-text">
+          <h1 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Discover Books with AI
+            Precision</h1>
+          <p>Explore personalized recommendations, earn discounts, and enjoy a seamless shopping experience.</p>
+          <div class="hero-buttons">
+            <button id="btnBrowse" class="btn" type="button">Browse Catalog</button>
+            <button id="btnQuiz2" class="btn btn-outline" type="button" aria-haspopup="dialog">Take Quiz</button>
+             <button id="studyCoachBtn" class="btn btn-outline">🧠 AI Study Coach</button>
+          </div>
+        </div>
+
+        <div class="hero-image" aria-hidden="true" tabindex="0" role="region" aria-label="Hero image carousel"
+          style="position: relative; cursor: pointer; user-select: none; max-width: 400px; height: 320px; flex: 1 1 400px;">
+          <img id="heroImage"
+            src="https://static.startuptalky.com/2021/11/Elon-Musk-Book-Recommendations-StartupTalky--1-.jpg"
+            alt="Illustration of a book with AI circuits"
+            style="width: 150%; height: 150%; object-fit: contain; border-radius: var(--border-radius); animation: fadeIn 0.5s ease-in-out;" />
+
+          <button id="heroPrevBtn" aria-label="Previous image"
+            style="position: absolute; bottom: 15px; left: 8px; transform: translateY(50%); background: rgba(131, 5, 234, 0.7); border: none; border-radius: 50%; width: 36px; height: 36px; color: white; font-size: 1.5rem; cursor: pointer; user-select: none; display: flex; align-items: center; justify-content: center; transition: background 0.3s;">
+            &#10094;
+          </button>
+
+          <button id="heroNextBtn" aria-label="Next image"
+            style="position: absolute; bottom: -24px; right: -192px; transform: translateY(-50%); background: rgba(131, 5, 234, 0.7); border: none; border-radius: 50%; width: 36px; height: 36px; color: white; font-size: 1.5rem; cursor: pointer; user-select: none; display: flex; align-items: center; justify-content: center; transition: background 0.3s;">
+            &#10095;
+          </button>
+        </div>
+      </div>
+    </section>
+    <!-- AI STUDY COACH SECTION -->
+    <section id="studyCoachSection" class="container hidden">
+  <h2>🧠 AI Study Coach</h2>
+  <div id="studyCoachResult" class="ai-box"></div>
+</section>
+
+    <!-- FEATURES SECTION -->
+    <section class="features container" role="region" aria-label="Features">
+      <h2>Why Choose ReadIQ?</h2>
+      <div class="features-grid">
+        <article class="feature-card" tabindex="0">
+          <div class="feature-icon" aria-hidden="true">
+            <i class="fas fa-robot"></i>
+          </div>
+          <h3>AI-Powered Recommendations</h3>
+          <p>Our advanced algorithms analyze your preferences to suggest books you'll love.</p>
+        </article>
+        <article class="feature-card" tabindex="0">
+          <div class="feature-icon" aria-hidden="true">
+            <i class="fas fa-tags"></i>
+          </div>
+          <h3>Earn Discounts</h3>
+          <p>Take our fun quiz to unlock special discounts on your favorite books.</p>
+        </article>
+        <article class="feature-card" tabindex="0">
+          <div class="feature-icon" aria-hidden="true">
+            <i class="fas fa-bolt"></i>
+          </div>
+          <h3>Instant Digital Access</h3>
+          <p>Get lifetime access to your books immediately after purchase.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- SEARCH SECTION -->
+    <section class="search-section container" role="search" aria-label="Book search"
+      style="gap: 12px; align-items: center;">
+      <div class="search-input-container" style="flex-grow: 1; position: relative; display: flex; align-items: center;">
+        <div id="searchSuggestions" class="search-suggestions"></div>
+        <i class="fas fa-search" aria-hidden="true"
+          style="position: absolute; left: 15px; color: var(--text-muted);"></i>
+        <input type="text" id="searchInput" class="search-input" placeholder="Search books by title or author..."
+          aria-label="Search books"
+          style="width: 100%; padding: 12px 16px 12px 45px; font-size: 1rem; border-radius: var(--border-radius); border: 1px solid var(--border-color); background: var(--bg-dark); color: var(--text-white); outline-offset: 2px; transition: var(--transition);" />
+      </div>
+      <button id="searchBtn" class="btn" aria-label="Search books" style="flex-shrink: 0;">Search</button>
+      <label for="imageSearchInput" class="image-search-label" tabindex="0" role="button" aria-label="Search by image"
+        style="flex-shrink: 0; display: flex; align-items: center; gap: 8px; padding: 10px 16px; background: var(--accent-red); color: var(--text-white); border-radius: var(--border-radius); cursor: pointer; transition: var(--transition); font-weight: 600; user-select: none;">
+        <i class="fas fa-camera" aria-hidden="true"></i> Search by Image
+      </label>
+      <input type="file" id="imageSearchInput" class="image-search-input" accept="image/*" title="Search by image"
+        style="display:none;" />
+      <button id="chatbotBtn" class="btn btn-outline chatbot-btn" aria-label="Open Chatbot">
+        <i class="fas fa-robot"></i>
+      </button>
+    </section>
+
+    <!-- CHATBOT SECTION -->
+    <div id="chatbotBox" class="chatbot-box hidden">
+
+      <div class="chatbot-header">
+        <span>AI Assistant</span>
+        <button id="closeChatbot">×</button>
+      </div>
+
+      <div id="chatMessages" class="chatbot-messages"></div>
+
+      <div class="chatbot-input">
+        <input id="chatInput" placeholder="Ask me about books, learning, or recommendations..." />
+        <button id="sendChat">➤</button>
+        <button id="micBtn">🎤</button>
+        <select id="languageSelect">
+          <option value="en-US">English</option>
+          <option value="hi-IN">Hindi</option>
+          <option value="mr-IN">Marathi</option>
+        </select>
+        <button id="clearChat">🧹</button>
+      </div>
+
+    </div>
+
+   <div id="askBookModal" class="hidden ask-book-modal">
+
+  <div class="ask-book-box">
+
+    <div class="ask-book-header">
+      <h3>🤖 Ask The Book</h3>
+      <button onclick="document.getElementById('askBookModal').classList.add('hidden')">
+        ✖
+      </button>
+    </div>
+
+   <div class="ask-book-body">
+
+  <input
+    id="bookQuestion"
+    type="text"
+    placeholder="Ask anything about this book..."
+  />
+
+  <div class="ask-book-actions">
+
+    <button id="askBookBtn" class="btn">
+      Ask
+    </button>
+
+    <button id="generateSummaryBtn" class="btn btn-outline">
+      ✨ Generate AI Summary
+    </button>
+
+  </div>
+
+  <div id="bookAnswer" class="ask-book-answer"></div>
+
+</div>
+
+  </div>
+
+</div>
+
+<!-- AI TUTOR MODAL -->
+<div id="aiTutorModal" class="hidden ai-modal">
+
+  <div class="ai-modal-box">
+
+    <div class="ai-modal-header">
+      <h3>🎓 AI Tutor</h3>
+      <button onclick="closeAITutor()">✖</button>
+    </div>
+
+    <div class="ai-modal-body">
+      <div id="aiTutorContent">
+        Loading AI lesson...
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- KNOWLEDGE GRAPH MODAL -->
+<div id="graphModal" class="hidden ai-modal">
+
+  <div class="ai-modal-box">
+
+    <div class="ai-modal-header">
+      <h3>🧠 Knowledge Graph</h3>
+      <button onclick="closeGraph()">✖</button>
+    </div>
+
+    <div id="knowledgeGraphCanvas"></div>
+
+  </div>
+
+</div>
+
+
+    <!-- CATALOG SECTION -->
+    <section id="catalog" class="catalog container" role="region" aria-label="Book catalog">
+      <h2 class="section-title">Book Catalog</h2>
+    <div class="ai-recommendations">
+
+  <h3 class="ai-title">🤖 AI Recommendations</h3>
+
+  <div id="aiRecommendations">
+
+    <!-- Row 1 -->
+    <div class="ai-row">
+      <h4 class="ai-row-title">Recommended For You</h4>
+      <div id="aiRowRecommended" class="ai-row-books"></div>
+    </div>
+
+    <!-- Row 2 -->
+    <div class="ai-row">
+      <h4 class="ai-row-title">Because You Read Programming</h4>
+      <div id="aiRowProgramming" class="ai-row-books"></div>
+    </div>
+
+    <!-- Row 3 -->
+    <div class="ai-row">
+      <h4 class="ai-row-title">Trending This Week</h4>
+      <div id="aiRowTrending" class="ai-row-books"></div>
+    </div>
+
+  </div>
+
+</div>
+
+</div>
+      <div class="filters" role="list" aria-label="Book category filters">
+        <button class="btn btn-outline active" data-category="all" role="listitem" aria-pressed="true">All</button>
+        <button class="btn btn-outline" data-category="Science Fiction" role="listitem" aria-pressed="false">Science
+          Fiction</button>
+        <button class="btn btn-outline" data-category="Programming" role="listitem"
+          aria-pressed="false">Programming</button>
+        <button class="btn btn-outline" data-category="Lifestyle" role="listitem"
+          aria-pressed="false">Lifestyle</button>
+        <button class="btn btn-outline" data-category="Education" role="listitem"
+          aria-pressed="false">Education</button>
+        <button class="btn btn-outline" data-category="Comics" role="listitem" aria-pressed="false">Comics</button>
+        <button class="btn btn-outline" data-category="Biopics" role="listitem" aria-pressed="false">Biopics</button>
+      </div>
+      <div id="catalogGrid" class="catalog-grid" aria-live="polite" aria-relevant="additions"></div>
+    </section>
+
+    <!-- KNOWLEDGE GRAPH SECTION (HIDDEN BY DEFAULT, SHOWN IN AI RECOMMENDATIONS) -->
+     <section id="knowledgeGraphSection" class="container hidden">
+  <h2>🧠 Knowledge Graph</h2>
+  <div id="knowledgeGraph"></div>
+     </section>
+
+    <!-- CART SECTION -->
+    <section id="cart" class="cart container" role="region" aria-label="Shopping cart"
+      style="margin: 60px auto; background: var(--bg-darker); padding: 40px; border-radius: var(--border-radius); box-shadow: 0 4px 20px rgba(178, 34, 34, 0.3); color: var(--text-white);">
+      <div class="cart-header"
+        style="display:flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+        <h2 class="section-title" style="color: var(--accent-red); margin: 0;">Your Digital Access Cart</h2>
+        <button id="clearCart" class="btn btn-outline" aria-label="Clear cart"><i class="fas fa-trash"
+            aria-hidden="true"></i> Clear Cart</button>
+      </div>
+
+      <div id="cartItems" class="cart-items" aria-live="polite" aria-relevant="additions"
+        style="display:flex; flex-direction: column; gap: 20px;">
+        <div class="empty-cart" role="alert" aria-live="assertive"
+          style="text-align:center; color: var(--text-muted); font-size: 1.1rem; padding: 40px 0; user-select:none;">
+          <i class="fas fa-shopping-cart" aria-hidden="true" style="font-size: 3rem; color: #444;"></i>
+          <p>Your cart is empty</p>
+        </div>
+      </div>
+
+      <div class="cart-summary"
+        style="background: var(--bg-dark); padding: 24px; border-radius: var(--border-radius); margin-top: 30px; color: var(--text-white);">
+        <h3 style="font-weight: 900; font-size: 1.5rem; margin-bottom: 20px;">Order Summary</h3>
+        <div class="summary-row"
+          style="display:flex; justify-content: space-between; margin-bottom: 12px; font-size: 1.1rem;">
+          <span>Subtotal:</span>
+          <span id="cartSubtotal">₹0</span>
+        </div>
+        <div class="summary-row"
+          style="display:flex; justify-content: space-between; margin-bottom: 12px; font-size: 1.1rem;">
+          <span>Discount:</span>
+          <span id="cartDiscount">-₹0 (0%)</span>
+         <span id="finalPrice" style="font-weight: 700; color: var(--accent-red);"></span>
+
+        </div>
+      </div>
+
+      <!-- ORDER HISTORY -->
+      <section id="orderHistory" class="container" style="margin-top: 40px; display:none;">
+        <h2>📚 My Digital Library</h2>
+        <div id="orderList"></div>
+      </section>
+
+      <!-- ACCOUNT SECURITY SECTION -->
+      <section id="securitySection" class="container" style="display:none; margin-top:40px;">
+
+        <h2 style="color: var(--accent-red);">🔐 Account Security</h2>
+
+        <div class="security-card">
+          <p><strong>Email:</strong> <span id="securityEmail"></span></p>
+          <p><strong>Login Method:</strong> <span id="securityProvider"></span></p>
+        </div>
+
+        <div class="security-actions">
+
+          <button id="changePasswordBtn" class="btn">
+            🔑 Change Password
+          </button>
+
+          <button id="logoutAllBtn" class="btn btn-outline danger">
+            🚪 Logout All Sessions
+          </button>
+
+        </div>
+
+      </section>
+
+
+      <!-- PAYMENT SECTION (RAZORPAY CHECKOUT) -->
+  <section id="paymentMethod" class="payment-method"
+        style="margin-top: 40px; background: var(--bg-darker); padding: 30px;
+         border-radius: var(--border-radius);
+         box-shadow: 0 4px 20px rgba(178,34,34,0.3);
+         color: var(--text-white); user-select:none;">
+
+      <h3 style="font-weight:900; font-size:1.8rem; margin-bottom:14px; color:var(--accent-red);">
+      Secure Checkout
+     </h3>
+
+     <p style="color:var(--text-muted); margin-bottom:20px;">
+      Pay using UPI, Cards, Netbanking, or Wallets — powered by Razorpay.
+     </p>
+
+     <div style="display:flex; gap:18px; font-size:1.4rem; opacity:0.8; margin-bottom:24px;">
+    <i class="fas fa-credit-card"></i>
+    <i class="fas fa-university"></i>
+    <i class="fas fa-mobile-alt"></i>
+    <i class="fas fa-wallet"></i>
+     </div>
+
+     <!-- PAY BUTTON -->
+     <button id="payBtn" type="button" disabled aria-disabled="true"
+     style="width:100%; padding:18px; font-size:1.25rem; font-weight:900;
+           border-radius:var(--border-radius); border:none;
+           background:#555; color:white;
+           cursor:not-allowed; transition:var(--transition);">
+
+      Pay ₹0
+      </button>
+
+      <p style="margin-top:12px; font-size:0.85rem; color:var(--text-muted);">
+      🔒 100% secure payments by Razorpay
+      </p>
+     </section>
+   </section>
+ </main>
+
+  <!-- LOGIN / REGISTER MODAL -->
+  <div id="loginModal" class="modal hidden" role="dialog" aria-modal="true">
+
+    <div class="auth-card">
+
+      <button class="close-btn" aria-label="Close">&times;</button>
+
+      <!-- LOGIN FORM -->
+      <form id="loginForm" novalidate>
+        <h2>Login</h2>
+
+        <label class="auth-label">Email</label>
+        <input type="email" id="email" class="auth-input" required>
+
+        <label class="auth-label">Password</label>
+        <div class="password-wrapper">
+          <input type="password" id="password" class="auth-input" required>
+          <span class="toggle-password" data-target="password">👁</span>
+        </div>
+
+
+        <button type="submit" class="btn auth-primary">Login</button>
+
+        <button id="googleLoginBtn" class="btn auth-google">
+          <img src="https://www.gstatic.com/images/branding/googleg/1x/googleg_standard_color_18dp.png" alt="Google"
+            style="width:18px; height:18px;">
+          <span>Continue with Google</span>
+        </button>
+
+
+        <p class="auth-helper">
+          You’ll be redirected to Google to continue
+        </p>
+        <button id="switchToRegister" type="button" class="auth-link-btn">
+          New here? <span>Create an account</span>
+        </button>
+
+        <p id="loginMsg" class="auth-msg"></p>
+      </form>
+
+      <!-- REGISTER FORM -->
+      <form id="registerForm" class="auth-form hidden" novalidate>
+        <h2>Create account</h2>
+        <p class="auth-subtext">Create your SmartLearn account</p>
+
+        <label class="auth-label">Name</label>
+        <input type="text" id="regName" class="auth-input" required>
+
+        <label class="auth-label">Email</label>
+        <input type="email" id="regEmail" class="auth-input" required>
+
+        <button type="submit" class="btn auth-primary">
+          Create account
+        </button>
+
+        <p class="auth-terms">
+          By creating an account, you agree to our Terms & Privacy Policy
+        </p>
+
+        <button id="switchToLogin" type="button" class="auth-link-btn">
+          Already have an account? <span>Sign in</span>
+        </button>
+
+        <p id="registerMsg" class="auth-msg"></p>
+      </form>
+
+      <!-- OTP VERIFICATION FORM -->
+<div id="otpBox" class="auth-form hidden">
+  <h2>Verify Email</h2>
+  <p class="auth-subtext">We sent a 6-digit code to your email</p>
+
+  <input
+    type="text"
+    id="otpInput"
+    class="auth-input otp-input"
+    maxlength="6"
+    placeholder="••••••"
+  />
+
+  <button id="verifyOtpBtn" class="btn auth-primary">
+    Verify OTP
+  </button>
+
+  <p id="otpMsg" class="auth-msg"></p>
+
+  <p class="otp-timer">
+    Resend OTP in <span id="otpSeconds">30</span>s
+  </p>
+
+  <button id="resendOtpBtn" class="auth-link-btn" disabled>
+    Resend OTP
+  </button>
+</div>
+
+<!-- SET PASSWORD FORM (SEPARATE) -->
+<div id="setPasswordBox" class="auth-form hidden">
+
+  <h2>Set Password</h2>
+  <p class="auth-subtext">
+    Create a password to finish registration
+  </p>
+
+  <label class="auth-label">New Password</label>
+  <div class="password-wrapper">
+    <input
+      type="password"
+      id="newPassword"
+      class="auth-input"
+      minlength="6"
+      required
+    />
+    <span class="toggle-password" data-target="newPassword">👁</span>
+  </div>
+
+  <p class="password-hint">Minimum 6 characters</p>
+
+  <button id="setPasswordBtn" class="btn auth-primary">
+    Complete Registration
+  </button>
+
+  <p id="setPasswordMsg" class="auth-msg"></p>
+</div>
+
+
+    </div>
+  </div>
+
+
+  <!-- QUIZ MODAL -->
+  <div id="quizModal" role="dialog" aria-modal="true" aria-labelledby="quizTitle"
+    style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.7); z-index:2000; justify-content:center; align-items:center; overflow:auto; padding:20px;">
+    <div
+      style="background:var(--bg-darker); padding:30px; border-radius:var(--border-radius); max-width:480px; width:100%; color:var(--text-white); position:relative;">
+      <button class="close-btn" aria-label="Close quiz modal"
+        style="position:absolute; top:12px; right:12px; background:none; border:none; color:var(--text-muted); font-size:1.5rem; cursor:pointer;">&times;</button>
+
+      <h2 id="quizTitle" style="margin-bottom:20px; color:var(--accent-red);">Take the Quiz</h2>
+      <div id="quizQuestion" style="font-weight:700; font-size:1.2rem; margin-bottom:20px;"></div>
+      <div id="quizOptions" role="list" style="display:flex; flex-direction:column; gap:12px; margin-bottom:20px;">
+      </div>
+      <button id="nextQuestionBtn" class="btn btn-outline" disabled style="width:100%;">Next</button>
+
+      <div class="quiz-progress-bar"
+        style="height:6px; background:var(--border-color); border-radius:3px; margin-top:20px; overflow:hidden;">
+        <div id="quizProgressFill"
+          style="height:100%; width:0%; background:var(--accent-red); transition:width 0.3s ease;"></div>
+      </div>
+      <p id="quizResult" aria-live="polite" style="margin-top:20px; font-weight:700;"></p>
+    </div>
+  </div>
+  <!-- PROFILE MODAL -->
+  <div id="profileModal" class="modal hidden">
+    <div class="modal-content">
+      <h2>My Profile</h2>
+      <img id="profileAvatarPreview" />
+      <span id="profileGoogleIndicator" class="google-indicator hidden"></span>
+      <p id="profileEmail" class="muted-text"></p>
+      <span id="providerBadge" class="google-badge hidden">
+        Signed in with Google
+      </span>
+
+
+      <label>Name</label>
+      <input id="profileNameInput" type="text" />
+
+      <label>Profile Photo URL</label>
+      <input id="profilePicInput" type="text" placeholder="https://..." />
+
+      <div class="modal-actions">
+        <button id="saveProfileBtn" class="btn">Save</button>
+        <button id="closeProfileBtn" class="btn btn-outline">Cancel</button>
+      </div>
+    
+  <div id="aiDashboard" class="ai-dashboard">
+
+  <h3>🧠 AI Learning Profile</h3>
+
+ <div class="ai-metric">
+  Focus Area: <span id="aiFocus">-</span>
+  </div>
+
+ <div class="ai-metric">
+  Learning Speed: <span id="aiSpeed">-</span>
+ </div>
+
+ <div class="ai-metric">
+  Engagement: <span id="aiEngagement">-</span>
+ </div>
+
+</div>
+<!-- Razorpay Checkout SDK (REQUIRED) -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<!-- 3️⃣ Load your app -->
+<script src="script.js" defer></script>
+
+</body>
+
+</html>
